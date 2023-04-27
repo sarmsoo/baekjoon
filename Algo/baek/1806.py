@@ -4,31 +4,29 @@ input = stdin.readline
 
 n, s = map(int, input().split())
 nums = list(map(int, input().split()))
-front, back = 0, 0
+right, left = 0, 0
 sum = nums[0]
 answer = maxsize
 while True:
-    if sum >= s and front == n - 1:
-        print(answer)
-        break
-
     if sum >= s:
-        if back == front:
+        if left == right:
             print(1)
             break
-
-        answer = min(answer, front - back + 1)
-        if sum - nums[back] >= s:
-            sum -= nums[back]
-            back += 1
+        answer = min(answer, right - left + 1)
+        if sum - nums[left] >= s:
+            sum -= nums[left]
+            left += 1
         else:
-            front += 1
-            if front <= n - 1:
-                sum += nums[front]
+            right += 1
+            if right <= n - 1:
+                sum += nums[right]
             else:
                 print(answer)
                 break
-
     else:
-        front += 1
-        sum += nums[front]
+        right += 1
+        if right <= n - 1:
+            sum += nums[right]
+        else:
+            print(0)
+            break
