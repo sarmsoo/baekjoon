@@ -13,8 +13,7 @@ for i in range(1, n + 1):
                 dp[i][j] = 1
 
             elif i - j == 1:
-                if nums[i] == nums[j]:
-                    dp[i][j] = 1
+                dp[i][j] = 1
 
             else:
                 if dp[i - 1][j + 1] == 1:
