@@ -23,7 +23,7 @@ def metric():
         tmp = 2 * n + 1
         for j in range(len(chicken)):
             if not visited[j]:
-                 c_y, c_x = chicken[j]
+                c_y, c_x = chicken[j]
                 tmp = min(tmp, abs(h_y - c_y) + abs(h_x - c_x))
 
         distance += tmp
