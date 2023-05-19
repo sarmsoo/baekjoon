@@ -1,25 +1,36 @@
 from sys import stdin
 input = stdin.readline
 
-def is_palindrome(str_):
-    left, right = 0, len(str_) - 1
-
+def ispseudo(word, left, right):
     while left < right:
-        if str_[left] == str_[right]:
+        if word[left] == word[right]:
             left += 1
             right -= 1
         else:
-            if left < right - 1:
-                tmp = str_[:right] + str_[right + 1:]
-                if tmp[:] == tmp[::-1]:
-                    return 1
+            return False
+    return True
 
-            if left + 1 < right:
-                tmp = str_[:left] + str_[left + 1:]
-                if tmp[:] == tmp[::-1]:
-                    return 1
-            return 2
-    return 0
+def ispalindrome(word, left, right):
+    if word == word[::-1]:
+        return 0
+    else:
+        while left < right:
+            if word[left] != word[right]:
+                check_left = ispseudo(word, left + 1, right)
+                check_right = ispseudo(word, left, right - 1)
 
-for _ in range(int(input())):
-    print(is_palindrome(input().strip()))
+                if check_left or check_right:
+                    return 1
+                else:
+                    return 2
+            else:
+                left += 1
+                right -= 1
+
+t = int(int(input()))
+
+for _ in range(t):
+    word = input().strip()
+    left, right = 0, len(word)-1
+    answer = ispalindrome(word, left, right)
+    print(answer)
