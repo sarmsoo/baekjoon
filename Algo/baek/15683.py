@@ -1,5 +1,4 @@
 from sys import stdin
-from copy import deepcopy
 input = stdin.readline
 
 def cctv_1(y: int, x: int, id: int, mod: int, back: bool) -> None:
@@ -48,7 +47,7 @@ def cctv_manage(y: int, x: int, id: int, mod: int, back: bool) -> None:
         cctv_4(y, x, id, mod, back)
         return
 
-def sol(start: int, cnt: int):
+def sol(start: int, cnt: int) -> None:
     global answer
     if cnt == len(cctvs):
         tmp = 0
