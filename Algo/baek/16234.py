@@ -15,7 +15,6 @@ def bfs(i, j):
     cnt = 1
     sum = graph[i][j]
     tmp = [(i, j)]
-    flag = False
     while q:
         y, x = q.popleft()
         for i in range(4):
@@ -31,13 +30,10 @@ def bfs(i, j):
                 q.append((ny, nx))
                 tmp.append((ny, nx))
                 visited[ny][nx] = True
-                flag = True
 
-    v = sum // cnt
     for y, x in tmp:
-        graph[y][x] = v
-
-    return flag
+        graph[y][x] = sum // cnt
+    return len(tmp) > 0
 
 answer = 0
 while True:
@@ -46,12 +42,10 @@ while True:
         for j in range(n):
             if visited[i][j]:
                 continue
-
             flag = max(bfs(i, j), flag)
 
-    if flag:
-        visited = [[False] * n for _ in range(n)]
-        answer += 1
     if not flag:
         print(answer)
         break
+    visited = [[False] * n for _ in range(n)]
+    answer += 1
