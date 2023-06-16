@@ -4,7 +4,6 @@ input = stdin.readline
 
 n, l, r = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(n)]
-visited = [[False] * n for _ in range(n)]
 
 dy = [1, -1, 0, 0]
 dx = [0, 0, 1, -1]
@@ -33,11 +32,12 @@ def bfs(i, j):
 
     for y, x in tmp:
         graph[y][x] = sum // cnt
-    return len(tmp) > 0
+    return len(tmp) > 1
 
 answer = 0
 while True:
     flag = False
+    visited = [[False] * n for _ in range(n)]
     for i in range(n):
         for j in range(n):
             if visited[i][j]:
@@ -47,5 +47,4 @@ while True:
     if not flag:
         print(answer)
         break
-    visited = [[False] * n for _ in range(n)]
     answer += 1
