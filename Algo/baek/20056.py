@@ -1,9 +1,8 @@
 from sys import stdin
-from collections import deque
 input = stdin.readline
 
 n, m, k = map(int, input().split())
-fireballs = deque()
+fireballs = []
 graph = [[[] for _ in range(n)] for _ in range(n)]
 
 dy = [-1, -1, 0, 1, 1, 1, 0, -1]
@@ -15,7 +14,7 @@ for _ in range(m):
 
 for _ in range(k):
     while fireballs:
-        y, x, m, s, d = fireballs.popleft()
+        y, x, m, s, d = fireballs.pop()
         ny = (y + s * dy[d]) % n
         nx = (x + s * dx[d]) % n
         graph[ny][nx].append([m, s, d])
