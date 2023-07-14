@@ -22,7 +22,7 @@ INF = maxsize
 n, e = map(int, input().split())
 graph = [[] for _ in range(n + 1)]
 
-# 무방향 그래프임
+# 무방향 그래프
 for _ in range(e):
     a, b, c = map(int, input().split())
     graph[a].append((b, c))
