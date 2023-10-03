@@ -5,7 +5,7 @@ input = stdin.readline
 def bfs(start, end):
     q = deque([start])
     visited[start] = True
-    time = 0
+    time = 1
     while q:
         for _ in range(len(q)):
             curr = q.popleft()
@@ -16,7 +16,7 @@ def bfs(start, end):
                 prev[next] = curr
 
                 if next == end:
-                    return time + 1
+                    return time
 
                 q.append(next)
                 visited[next] = True
